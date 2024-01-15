@@ -705,7 +705,7 @@ uint32_t Control::getLastSrcId(uint32_t slotNo) const
     return 0U;
 }
 
-uint32_t Control::getLastRssi(uint32_t slotNo) const
+int32_t Control::getLastRssi(uint32_t slotNo) const
 {
     switch (slotNo) {
     case 1U:
