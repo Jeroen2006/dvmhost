@@ -517,6 +517,12 @@ void RESTAPI::restAPI_GetStatus(const HTTPPayload& request, HTTPPayload& reply, 
         response["lastDstId"].set<uint32_t>(m_host->m_lastDstId);
         response["lastSrcId"].set<uint32_t>(m_host->m_lastSrcId);
 
+        //Currently for DMR timeslots only
+        response["timeslots"]["lastDstIdSlot1"].set<uint32_t>(m_host->m_lastDstIdSlot1);
+        response["timeslots"]["lastSrcIdSlot1"].set<uint32_t>(m_host->m_lastSrcIdSlot1);
+        response["timeslots"]["lastDstIdSlot2"].set<uint32_t>(m_host->m_lastDstIdSlot2);
+        response["timeslots"]["lastSrcIdSlot2"].set<uint32_t>(m_host->m_lastSrcIdSlot2);
+
         uint32_t peerId = networkConf["id"].as<uint32_t>();
         response["peerId"].set<uint32_t>(peerId);
     }
