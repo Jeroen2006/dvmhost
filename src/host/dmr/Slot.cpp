@@ -806,11 +806,6 @@ uint32_t Slot::getLastSrcId() const
     return 0U;
 }
 
-uint8_t Slot::getRssi() const
-{
-    return m_rssi;
-}
-
 /// <summary>
 /// Helper to initialize the DMR slot processor.
 /// </summary>
