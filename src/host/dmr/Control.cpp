@@ -709,9 +709,9 @@ uint8_t Control::getLastRssi(uint32_t slotNo) const
 {
     switch (slotNo) {
     case 1U:
-        return m_slot1->getRssi();
+        return m_slot1->getRSSI();
     case 2U:
-        return m_slot2->getRssi();
+        return m_slot2->getRSSI();
     default:
         LogError(LOG_DMR, "DMR, invalid slot, slotNo = %u", slotNo);
         break;
