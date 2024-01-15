@@ -529,10 +529,10 @@ void RESTAPI::restAPI_GetStatus(const HTTPPayload& request, HTTPPayload& reply, 
         timeslot2["lastSrcId"].set<uint32_t>(m_host->m_lastSrcIdSlot2);
 
 
-        int32_t rssiTimeslot1 = m_dmr->getLastRssi(1);
-        int32_t rssiTimeslot2 = m_dmr->getLastRssi(2);
-        timeslot1["lastRssi"].set<int32_t>(rssiTimeslot1);
-        timeslot2["lastRssi"].set<int32_t>(rssiTimeslot2);
+        uint8_t rssiTimeslot1 = m_dmr->getLastRssi(1);
+        uint8_t rssiTimeslot2 = m_dmr->getLastRssi(2);
+        timeslot1["lastRssi"].set<uint8_t>(rssiTimeslot1);
+        timeslot2["lastRssi"].set<uint8_t>(rssiTimeslot2);
 
 
         timeslots["1"].set<json::object>(timeslot1);
