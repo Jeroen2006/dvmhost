@@ -519,11 +519,24 @@ void RESTAPI::restAPI_GetStatus(const HTTPPayload& request, HTTPPayload& reply, 
 
         //Currently for DMR timeslots only
         json::object timeslots = json::object();
-        timeslots["lastDstIdSlot1"].set<uint32_t>(m_host->m_lastDstIdSlot1);
-        timeslots["lastSrcIdSlot1"].set<uint32_t>(m_host->m_lastSrcIdSlot1);
-        timeslots["lastDstIdSlot2"].set<uint32_t>(m_host->m_lastDstIdSlot2);
-        timeslots["lastSrcIdSlot2"].set<uint32_t>(m_host->m_lastSrcIdSlot2);
 
+        json::object timeslot1 = json::object();
+        json::object timeslot2 = json::object();
+
+        timeslot1["lastDstId"].set<uint32_t>(m_host->m_lastDstIdSlot1);
+        timeslot1["lastSrcId"].set<uint32_t>(m_host->m_lastSrcIdSlot1);
+        timeslot2["lastDstId"].set<uint32_t>(m_host->m_lastDstIdSlot2);
+        timeslot2["lastSrcId"].set<uint32_t>(m_host->m_lastSrcIdSlot2);
+
+
+        int32_t rssiTimeslot1 = m_dmr->getLastRssi(1);
+        int32_t rssiTimeslot2 = m_dmr->getLastRssi(2);
+        timeslot1["lastRssi"].set<int32_t>(rssiTimeslot1);
+        timeslot2["lastRssi"].set<int32_t>(rssiTimeslot2);
+
+
+        timeslots["1"].set<json::object>(timeslot1);
+        timeslots["2"].set<json::object>(timeslot2);
         response["timeslots"].set<json::object>(timeslots);
 
         uint32_t peerId = networkConf["id"].as<uint32_t>();

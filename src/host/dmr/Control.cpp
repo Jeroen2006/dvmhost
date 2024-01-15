@@ -705,6 +705,21 @@ uint32_t Control::getLastSrcId(uint32_t slotNo) const
     return 0U;
 }
 
+uint32_t Control::getLastRssi(uint32_t slotNo) const
+{
+    switch (slotNo) {
+    case 1U:
+        return m_slot1->getRssi();
+    case 2U:
+        return m_slot2->getRssi();
+    default:
+        LogError(LOG_DMR, "DMR, invalid slot, slotNo = %u", slotNo);
+        break;
+    }
+
+    return 0U;
+}
+
 // ---------------------------------------------------------------------------
 //  Private Class Members
 // ---------------------------------------------------------------------------
