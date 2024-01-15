@@ -108,6 +108,11 @@ private:
     uint32_t m_lastDstId;
     uint32_t m_lastSrcId;
 
+    uint32_t m_lastDstIdSlot1;
+    uint32_t m_lastSrcIdSlot1;
+    uint32_t m_lastDstIdSlot2;
+    uint32_t m_lastSrcIdSlot2;
+
     std::string m_identity;
     std::string m_cwCallsign;
     uint32_t m_cwIdTime;

@@ -186,6 +186,9 @@ void Host::writeFramesDMR1(dmr::Control* control, std::function<void()>&& afterW
 
                 m_lastDstId = control->getLastDstId(1U);
                 m_lastSrcId = control->getLastSrcId(1U);
+
+                m_lastDstIdSlot1 = m_lastDstId;
+                m_lastSrcIdSlot1 = m_lastSrcId;
             }
         }
     }
@@ -308,6 +311,9 @@ void Host::writeFramesDMR2(dmr::Control* control, std::function<void()>&& afterW
 
                 m_lastDstId = control->getLastDstId(2U);
                 m_lastSrcId = control->getLastSrcId(2U);
+
+                m_lastDstIdSlot2 = m_lastDstId;
+                m_lastSrcIdSlot2 = m_lastSrcId;
             }
         }
     }
