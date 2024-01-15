@@ -139,6 +139,9 @@ namespace dmr
         /// <summary>Helper to get the last received RSSI.</summary>
         uint8_t getLastRssi(uint32_t slotNo) const;
 
+        /// <summary>Helper to get slot state.</summary>
+        uint8_t getSlotState(uint32_t slotNo) const;
+
     private:
         friend class Slot;
 

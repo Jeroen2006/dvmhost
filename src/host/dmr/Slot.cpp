@@ -175,7 +175,8 @@ Slot::Slot(uint32_t slotNo, uint32_t timeout, uint32_t tgHang, uint32_t queueSiz
     m_supervisor(false),
     m_notifyCC(true),
     m_verbose(verbose),
-    m_debug(debug)
+    m_debug(debug),
+    m_slotState(0)
 {
     m_interval.start();
 
@@ -542,6 +543,7 @@ void Slot::clock()
             m_rfTGHang.stop();
             if (m_verbose) {
                 LogMessage(LOG_RF, "Slot %u, talkgroup hang has expired, lastDstId = %u", m_slotNo, m_rfLastDstId);
+                m_slotState = 0;
             }
             m_rfLastDstId = 0U;
             m_rfLastSrcId = 0U;
@@ -568,6 +570,7 @@ void Slot::clock()
                 m_netTGHang.stop();
                 if (m_verbose) {
                     LogMessage(LOG_NET, "Slot %u, talkgroup hang has expired, lastDstId = %u", m_slotNo, m_netLastDstId);
+                    m_slotState = 0;
                 }
                 m_netLastDstId = 0U;
                 m_netLastSrcId = 0U;

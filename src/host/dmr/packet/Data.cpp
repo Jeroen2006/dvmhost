@@ -150,10 +150,14 @@ bool Data::process(uint8_t* data, uint32_t len)
             ::ActivityLog("DMR", true, "Slot %u RF end of voice transmission, %.1f seconds, BER: %.1f%%, RSSI: -%u/-%u/-%u dBm",
                 m_slot->m_slotNo, float(m_slot->m_rfFrames) / 16.667F, float(m_slot->m_rfErrs * 100U) / float(m_slot->m_rfBits),
                 m_slot->m_minRSSI, m_slot->m_maxRSSI, m_slot->m_aveRSSI / m_slot->m_rssiCount);
+
+            m_slot->m_slotState = 2;
         }
         else {
             ::ActivityLog("DMR", true, "Slot %u RF end of voice transmission, %.1f seconds, BER: %.1f%%",
                 m_slot->m_slotNo, float(m_slot->m_rfFrames) / 16.667F, float(m_slot->m_rfErrs * 100U) / float(m_slot->m_rfBits));
+
+            m_slot->m_slotState = 2;
         }
 
         LogMessage(LOG_RF, "DMR Slot %u, total frames: %d, total bits: %d, errors: %d, BER: %.4f%%",
