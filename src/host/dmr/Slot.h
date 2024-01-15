@@ -130,7 +130,7 @@ namespace dmr
         uint32_t getLastSrcId() const;
 
         /// <summary>Helper to get the last received RSSI.</summary>
-        uint8_t getRSSI() const { return m_rssi; }
+        uint8_t getRSSI() const;
 
         /// <summary>Helper to initialize the slot processor.</summary>
         static void init(Control* dmr, bool authoritative, uint32_t colorCode, SiteData siteData, bool embeddedLCOnly, bool dumpTAData, uint32_t callHang, modem::Modem* modem,
